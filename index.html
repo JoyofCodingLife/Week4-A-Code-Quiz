@@ -22,7 +22,7 @@
         <!-- Section with Highscores Link and Timer -->
         <nav class="navbar">
             <div class="highscores-container">
-             <a class="highscores" href="highscores.html"><i class="fas fa-medal"></i> View Highscores</a>
+             <a id="view-highscores" href="#"><i class="fas fa-medal"></i> View Highscores</a>
             </div>
 
             <div class="timer-container">
@@ -32,13 +32,56 @@
         
         <!-- Section with Quiz -->
         <main class="main-container">
-            <h1>JavaScript Fundamentals Quiz</h1>
-            <h4>Hello Stranger!<br>
-                 Are you ready to test your knowledge of JavaScript fundamentals?<br>
-                 This is a short multiple-choise quiz. Time will be ticking and wrong answers will result in a time penalty!<br>
-                 So press start button & good luck to you!
-            </h4>
-            <button id="start">Start Quiz</button>
+
+
+            <!-- Start Screen -->
+            <div id="start-page">
+              <div class="center">
+                 <h1>JavaScript Fundamentals Quiz</h1>
+                 <h4>Hello Stranger!<br>
+                      Are you ready to test your knowledge of JavaScript fundamentals?<br>
+                      This is a short multiple-choise quiz. Time will be ticking and wrong answers will result in a time penalty!<br>
+                      So press start button & good luck to you!
+                 </h4>
+              </div>
+              <div class="center">
+                 <button type="button" id="start-btn">Start Quiz</button>
+              </div>
+            </div>
+
+            <!-- Questions Screen -->
+            <div id="questions-section" class="center" style="display: ;">
+                <h4 id="question">Queston blablabla</h4>
+                <p><button type="button" id="option1">option1</button></p>
+                <p><button type="button" id="option2">option2</button></p>
+                <p><button type="button" id="option3">option3</button></p>
+                <p><button type="button" id="option4">option4</button></p>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-section" class="center" style="display: ;">
+                <h1> Results </h1>
+                <h4><i class="fas fa-code"></i> Your final score is <span id="final-score"></span> <i class="fas fa-code"></i></h4>
+                <form>
+                    <p> Enter your initials: <input id="initials-input"></p>
+                    <button type="submit" id="submit-btn">Submit</button>
+                </form>
+            </div>
+
+            <!-- Highscores Screen -->
+            <div id="highscores-section" class="center" style="display: ;">
+                <h1>Highscores Stats</h1>
+                <div id="list-of-highscores"></div>
+
+                <div class="inline">
+                 <button type="submit" id="try-again-btn">Try Again</button>
+                 <button type="submit" id="clear-all-btn">Clear All</button>
+                </div>
+
+            </div>
+
+
+
 
         </main>
 

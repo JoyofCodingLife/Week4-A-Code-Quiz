@@ -11,6 +11,7 @@ font-family: 'Poppins', sans-serif;
 * {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    line-height: 1.5rem;
 }
 
 body {
@@ -20,7 +21,6 @@ body {
 /* Section with Highscores Link and Timer */
 nav {
     background-color: rgb(213, 132, 253);
-
 
     width: 100%;
     margin: 0.5rem;
@@ -50,22 +50,27 @@ span {
 /* Section with Quiz */
 main{
     background-color: coral;
-
-    margin: 40px;
     width: auto;
-    height: 500px;
+    margin-top: 3rem;
+    height: 600px;
+}
+.center {
+    background-color: cadetblue;;
+    margin: 15px 30px;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items: center;
+    
 }
 
 h1 {
-    width: auto;
     padding: 1rem;
     text-align: center;
     font-family: 'Potta One', cursive;
     font-size: 50px;
+    line-height: 3rem;
 }
 
 h4 {
@@ -74,10 +79,18 @@ h4 {
     line-height: 1.5rem;
 }
 
-button {
+button#start-btn {
     margin-top: 30px;
     padding: 8px;
     font-family: 'Potta One', cursive;
+    border-radius: 1rem;
+    border-color: crimson;
+}
+
+button {
+    background-color: white;
+    margin-top: 10px;
+    padding: 8px;
     border-radius: 1rem;
     border-color: crimson;
 }
