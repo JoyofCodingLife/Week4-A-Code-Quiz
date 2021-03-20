@@ -18,7 +18,7 @@
 <br>
 
 ### Live URL
-https://joyofcodinglife.github.io/Week3-A-Password-Generator/
+https://joyofcodinglife.github.io/Week4-A-Code-Quiz/
 
 <br>
 

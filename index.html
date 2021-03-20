@@ -6,17 +6,41 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+     <!-- Title -->
      <title>Code Quiz</title>
 
      <!-- Styles Files -->
      <link rel="stylesheet" href="assets/css/reset.css" />
      <link rel="stylesheet" href="assets/css/style.css" />
+
      <!-- JavaScript for Icons from FontAwesome -->
      <script src="https://kit.fontawesome.com/1228d6a68f.js" crossorigin="anonymous"></script>
      
   </head>
 
     <body>
+        <!-- Section with Highscores Link and Timer -->
+        <nav class="navbar">
+            <div class="highscores-container">
+             <a class="highscores" href="highscores.html"><i class="fas fa-medal"></i> View Highscores</a>
+            </div>
+
+            <div class="timer-container">
+             <p class="timer"><i class="fas fa-stopwatch"></i> Time: <span id="seconds-left">0</span> seconds left</p>
+            </div>
+        </nav>
+        
+        <!-- Section with Quiz -->
+        <main class="main-container">
+            <h1>JavaScript Fundamentals Quiz</h1>
+            <h4>Hello Stranger!<br>
+                 Are you ready to test your knowledge of JavaScript fundamentals?<br>
+                 This is a short multiple-choise quiz. Time will be ticking and wrong answers will result in a time penalty!<br>
+                 So press start button & good luck to you!
+            </h4>
+            <button id="start">Start Quiz</button>
+
+        </main>
 
 
      <!-- JavaScript Files -->

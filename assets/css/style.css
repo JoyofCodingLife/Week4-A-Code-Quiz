@@ -1,0 +1,88 @@
+/* Fonts Import*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Potta+One&display=swap');
+/*
+Standout text
+font-family: 'Potta One', cursive;
+General text
+font-family: 'Poppins', sans-serif;
+*/
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: rgba(42, 54, 56, 0.568);
+}
+
+/* Section with Highscores Link and Timer */
+nav {
+    background-color: rgb(213, 132, 253);
+
+
+    width: 100%;
+    margin: 0.5rem;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* View Highscores link */
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color: crimson;
+}
+
+/* Timer */
+span {
+    color: crimson;
+}
+
+/* Section with Quiz */
+main{
+    background-color: coral;
+
+    margin: 40px;
+    width: auto;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+h1 {
+    width: auto;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Potta One', cursive;
+    font-size: 50px;
+}
+
+h4 {
+    padding: 0.5rem;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+button {
+    margin-top: 30px;
+    padding: 8px;
+    font-family: 'Potta One', cursive;
+    border-radius: 1rem;
+    border-color: crimson;
+}
+
+button:hover {
+    background-color: red;
+    color: white;
+}
