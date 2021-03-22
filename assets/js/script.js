@@ -198,9 +198,9 @@ var allQuestions = [
       clock.textContent = " ~ Game Over ~"
 
       // Show final score of correct answers
-      finalScore.textContent = correctAnswer + " correct asnwers!";
+      finalScore.textContent = correctAnswer + " correct asnwers out of 10!";
       if (correctAnswer === 1) {
-          finalScore.textContent = correctAnswer + " correct answer!";
+          finalScore.textContent = correctAnswer + " correct answer out of 10!";
       }
       if (correctAnswer === 0) {
           finalScore.textContent = "NIL correct answers! You can do better!"
