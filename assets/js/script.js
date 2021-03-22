@@ -224,7 +224,7 @@ var allQuestions = [
 
     // Hide Results Section, shoe Highscores Section
     resultsSection.style.display = "none";
-    highscoresSection.style.display = "block";   
+    highscoresSection.style.display = "flex";   
 
     // Store results into local storage
     var savedHighscores = localStorage.getItem("storage");
@@ -266,7 +266,7 @@ var allQuestions = [
     startSection.style.display = "none";
     questionsSection.style.display = "none";
     resultsSection.style.display = "none";
-    highscoresSection.style.display = "block";
+    highscoresSection.style.display = "flex";
 
     var savedHighscores = localStorage.getItem("storage");
 
