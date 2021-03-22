@@ -36,9 +36,9 @@
      var timeInterval;
      var timeGiven = 120;
      var correctAnswer = 0;
-     var questionNumber = 0;
      var questionIndex = 0;
-     var scoreResult;
+     var scoresArray;
+
 
 // List of Questions
 var allQuestions = [
@@ -50,7 +50,7 @@ var allQuestions = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
         choices: ["<head>", "<script>", "<meta>", "<link>"],
-        answer: "<script"
+        answer: "<script>"
     },
     {
         question: "An array always begins at an index of:",
@@ -99,21 +99,22 @@ var allQuestions = [
 
 // List of all Functions
 
-//START SECTION
+//START SECTION -------------------------------------------------------
 
  // When Start Button is clicked
  startBtn.addEventListener("click", startNewQuiz);
 
-// QUESTIONS SECTIONS
+// QUESTIONS SECTIONS -------------------------------------------------
   
   // Then a timer starts 
   function startNewQuiz () {
       timeGiven = 120;
       timeLeft.textContent = timeGiven + " seconds left";
       questionIndex = 0;
-      initialsInput = "";
+      initialsInput.textContent = "";
+
       // Hide Start Section, show Questions Section
-      startSection.style.display = "none";
+      startSection.style.display = "none";              
       questionsSection.style.display = "flex";
   
       var startTimer = setInterval (function () {
@@ -122,7 +123,7 @@ var allQuestions = [
           if (timeGiven === 1) {
               timeLeft.textContent = timeGiven + " second left"
           } 
-          // if time run out, then run Game Over functions
+          // If time run out, then run Game Over functions
           if (timeGiven <= 0) {
               clearInterval(startTimer);
               if (questionIndex < allQuestions.length -1) {
@@ -145,7 +146,7 @@ var allQuestions = [
       choice2.textContent = allQuestions[questionIndex].choices[1];
       choice3.textContent = allQuestions[questionIndex].choices[2];
       choice4.textContent = allQuestions[questionIndex].choices[3];
-  }
+  };
   
   // Event Listeners for Choice Buttons
   choice1.addEventListener("click", choose0);
@@ -159,115 +160,139 @@ var allQuestions = [
   function choose2 () {answerCheck(2);}
   function choose3 () {answerCheck(3);}
 
-
-
-   // When question is answered, it shows if it was correct or wrong
+  // When question is answered, it shows if it was correct or wrong
   function answerCheck (answer) {
-      showAnswer.style.display = "block";
-      // if correct answer, then add 1 score to final score
+      //Show correct answer
+      showAnswer.style.display = "flex";
+
+      // If correct answer, then add 1 score to final score
       if (allQuestions[questionIndex].answer === allQuestions[questionIndex].choices[answer]){
           correctAnswer++;
           showAnswer.textContent = "YES! Correct!"
       } 
-      // if wrong then deduct 10 second from time left
+      // If wrong then deduct 10 second from time left
       else {
           timeGiven -=10;
           timeLeft.textContent = timeGiven + " seconds left";
           showAnswer.textContent = "OOPS...Wrong! The correct answer is: " + allQuestions[questionIndex].answer;
       }
-      // then next question is asked
+      // Then next question is asked
       questionIndex++;
       if (questionIndex < allQuestions.length){
           nextQuestion();
       }
-      // if no more questions is left, then run Game Over function
+      // If no more questions is left, then run Game Over function
       else {
           gameOver();
       }
   }
 
-// RESULTS SECTIONS
+// RESULTS SECTIONS ------------------------------------------------
 
   // Game Over function 
   function gameOver () {
+
       // Hide Question Section, show Results Section
-      questionsSection.style.display = "none";
+      questionsSection.style.display = "none";  
       resultsSection.style.display = "flex";
-      // show final score of correct answers
-      finalScore.textContent = correctAnswer; 
-      // stop the timer
-      clock.textContent = "~ Game Over ~"
+      clock.textContent = " ~ Game Over ~"
+
+      // Show final score of correct answers
+      finalScore.textContent = correctAnswer + " correct asnwers!";
+      if (correctAnswer === 1) {
+          finalScore.textContent = correctAnswer + " correct answer!";
+      }
+      if (correctAnswer === 0) {
+          finalScore.textContent = "NIL correct answers! You can do better!"
+      }
   }
   
   // Event listener for Submit Button
   submitBtn.addEventListener("click", function(event){ 
-      storeResults(event);
+    saveResults(event);
   });
 
+  // Enter initial or name and save in local storage
+  function saveResults(event) {
+    event.preventDefault();
 
-  // Enter initials and store highscore
-  function storeResults (event) {
-      event.preventBlank();
-  
-      // alert if blank
-      if (initialsInput.value === "") {
-          alert ("Stranger, please enter your initials.");
-          return;
-      }
-  
-      // store initials and highscores
-      var highscoreStorage = localStorage.getItem("highscores");
-      var scoresArray;
-  
-      if (highscoreStorage === null) {
-          scoresArray = [];
-      } else {
-          scoresArray = JSON.parse(highscoreStorage)
-      }
-  
-      var playerScore = {
-          initials: initialInput.value,
-          score: finalScore.textContent
-      };
-  
-      console.log(playerScore);
-      scoresArray.push(playerScore);
-  
-      // stringify array in order to store in local
-      var scoresArrayString = JSON.stringify(scoresArray);
-      window.localStorage.setItem("highscores", scoresArrayString);
-      
-    // list current highscores
-    listHighscores();
-}
+    // Alert if blank
+    if (initialsInput.value === "") {
+        alert ("Stranger, please enter your initials or name!");
+        return;
+    } 
 
-// HIGHSCORES SECTION
+    // Hide Results Section, shoe Highscores Section
+    resultsSection.style.display = "none";
+    highscoresSection.style.display = "block";   
 
-  //Event listener for View Highscores
+    // Store results into local storage
+    var savedHighscores = localStorage.getItem("storage");
+    var scoresArray;
+
+    if (savedHighscores === null) {
+     scoresArray = [];
+    } else {
+        scoresArray = JSON.parse(savedHighscores)
+    }
+
+    // Match initials to result
+    var userScore = {
+        initials: initialsInput.value,
+        score: finalScore.textContent
+    };
+
+    console.log(userScore);
+    scoresArray.push(userScore);
+
+    var scoresArrayString = JSON.stringify(scoresArray);
+    window.localStorage.setItem("storage", scoresArrayString);
+    
+    // Show all current Highscores
+    showAllHighscores();
+  }
+
+// HIGHSCORES SECTIONS --------------------------------------------
+  
+  // Event listener for View Highscores link
   viewHighscore.addEventListener("click", function(event) { 
-    listHighscores(event);
-    });
+    showAllHighscores(event);
+  });
 
-  var i = 0;
-  function listHighscores() {
-    // Hide Result Section, show Results Section
-    resultsSection.style.display = "hide"
-    highscoresSection.style.display = "flex";
+  // Function to show all Highscores
+  function showAllHighscores() {
 
-    var highscoreStorage = localStorage.getItem("highscores");
+    // Hide all Sectioction except Highscores Section
+    startSection.style.display = "none";
+    questionsSection.style.display = "none";
+    resultsSection.style.display = "none";
+    highscoresSection.style.display = "block";
 
-    // check if there is any saved in local storage
-    if (highscoreStorage === null) {
+    var savedHighscores = localStorage.getItem("storage");
+
+    // Check if there is any saved already in local storage
+    if (savedHighscores === null) {
         return;
     }
-    console.log(highscoreStorage);
+    console.log(savedHighscores);
 
-    var savedHighscores = JSON.parse(highscoreStorage);
+    var storedHighscores = JSON.parse(savedHighscores);
 
-    for (; i < savedHighscores.length; i++) {
-        var newHighscore = document.createElement("p");
-        newHighscore.innerHTML = "Player " + savedHighscores[i].initials + " = " + savedHighscores[i].score;
+    for (var i = 0; i < storedHighscores.length; i++) {
+        var newHighscore = document.createElement("li");
+        newHighscore.innerHTML = "Player " + storedHighscores[i].initials + " = " + storedHighscores[i].score;
         listOfHighscores.appendChild(newHighscore);
     }
   }
 
+  // Even listeners for Try Again and Clear All Buttons
+  tryAgainBtn.addEventListener("click", function() {
+    window.location.reload()
+  });
+  
+  clearAllBtn.addEventListener("click", function(){
+    window.localStorage.removeItem("storage");
+    listOfHighscores.innerHTML = "Highscores Cleared!";
+  });
+
+  // Created by L.Korolyova @ 2021
