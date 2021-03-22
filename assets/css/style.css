@@ -78,10 +78,26 @@ h1:hover {
     color: var(--red);
 }
 
+h2 {
+    padding: 1.5rem;
+    text-align: center;
+    font-family: 'Potta One', cursive;
+    font-size: 35px;
+    line-height: 3rem;
+}
+
 h4 {
     padding: 0.5rem;
     text-align: center;
     line-height: 1.5rem;
+}
+
+#asnwer {
+    background-color: rgb(238, 242, 238);
+    padding: 5px;
+    border-radius: 2rem;
+
+
 }
 
 button#start-btn {
