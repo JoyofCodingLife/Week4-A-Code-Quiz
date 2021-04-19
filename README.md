@@ -22,7 +22,7 @@ The most challenging part for me was make functions to save and store data.
 <br>
 
 ### Live URL
-https://joyofcodinglife.github.io/Week4-A-Code-Quiz/
+https://korolyovalara.github.io/Code-Quiz/
 
 <br>
 
